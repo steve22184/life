@@ -20,7 +20,7 @@ public class LifeFrame {
     public static void main(String[] args) {
         JFrame life = new JFrame("Life");
         life.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        final Board board = new Board(25, 25);
+        final Board board = new Board(25, 24);
         final LifeView lifeView = new LifeView(board);
         life.getContentPane().add(lifeView, BorderLayout.CENTER);
 
@@ -41,7 +41,7 @@ public class LifeFrame {
                                         }
                                     }
                                 },
-                                500, 500
+                                500, 300
                         );
                     }
 
