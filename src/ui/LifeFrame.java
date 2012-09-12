@@ -4,6 +4,7 @@ import jet.Function0;
 import jet.Tuple0;
 import life.core.Board;
 import life.core.Liveness;
+import life.core.ToroidalBoard;
 
 import javax.swing.*;
 import java.awt.*;
@@ -20,7 +21,7 @@ public class LifeFrame {
     public static void main(String[] args) {
         JFrame life = new JFrame("Life");
         life.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        final Board board = new Board(25, 24);
+        final Board board = new ToroidalBoard(25, 24);
         final LifeView lifeView = new LifeView(board);
         life.getContentPane().add(lifeView, BorderLayout.CENTER);
 

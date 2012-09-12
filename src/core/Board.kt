@@ -7,8 +7,9 @@ import util.*
 import life.core.Liveness.*
 import java.util.ArrayList
 import java.util.LinkedHashMap
+import java.util.IllegalFormatWidthException
 
-class Board(width: Int, height: Int) {
+open class Board(width: Int, height: Int) {
     private val matrix: MutableMatrix<Liveness> = MutableMatrixImpl(width, height) {x, y -> DEAD}
     private val onChange: MutableMap<Any, () -> Unit> = LinkedHashMap()
 
@@ -66,7 +67,7 @@ class Board(width: Int, height: Int) {
         return result
     }
 
-    private fun cell(x: Int, y: Int): Point? {
+    protected open fun cell(x: Int, y: Int): Point? {
         if (x !in 0..width - 1 || y !in 0..height - 1) return null
         return Point(x, y)
     }
@@ -77,6 +78,20 @@ class Board(width: Int, height: Int) {
         }
     }
 
+}
+
+class ToroidalBoard(width: Int, height: Int) : Board(width, height) {
+
+    protected override fun cell(x: Int, y: Int): Point? {
+        return Point(wrap(x, width), wrap(y, height))
+    }
+
+    private fun wrap(n: Int, size: Int): Int {
+      return if (n < 0)
+                size + (n % size)
+             else
+                n % size
+    }
 }
 
 enum class Liveness {
