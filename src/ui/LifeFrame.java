@@ -19,37 +19,21 @@ import java.util.TimerTask;
  */
 public class LifeFrame {
     public static void main(String[] args) {
-        JFrame life = new JFrame("Life");
-        life.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        JFrame frame = new JFrame("Life");
+        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         final Board board = new ToroidalBoard(25, 24);
         final LifeView lifeView = new LifeView(board);
-        life.getContentPane().add(lifeView, BorderLayout.CENTER);
+        frame.add(lifeView, BorderLayout.CENTER);
 
-        life.setSize(500, 500);
+        frame.setSize(500, 500);
 
-        life.addKeyListener(
+        final boolean[] go = {false};
+        frame.addKeyListener(
                 new KeyAdapter() {
-                    boolean go = false;
-
-                    {
-                        java.util.Timer timer = new java.util.Timer("Animate");
-                        timer.schedule(
-                                new TimerTask() {
-                                    @Override
-                                    public void run() {
-                                        if (go) {
-                                            board.step();
-                                        }
-                                    }
-                                },
-                                500, 300
-                        );
-                    }
-
                     public void keyPressed(KeyEvent e) {
                         switch (e.getKeyChar()) {
                             case ' ':
-                                go = !go;
+                                go[0] = !go[0];
                                 break;
                             case 'c':
                                 for (int y = 0; y < board.getHeight(); y++) {
@@ -62,9 +46,20 @@ public class LifeFrame {
                 }
         );
 
+        java.util.Timer timer = new java.util.Timer("Animate");
+        timer.schedule(
+                new TimerTask() {
+                    @Override
+                    public void run() {
+                        if (go[0]) {
+                            board.step();
+                        }
+                    }
+                },
+                500, 300
+        );
 
-
-        life.setVisible(true);
+        frame.setVisible(true);
     }
 
     private static class LifeView extends JComponent {
@@ -94,17 +89,11 @@ public class LifeFrame {
         }
 
         @Override
-        protected void paintComponent(Graphics graphics) {
-            super.paintComponent(graphics);
-            Graphics2D g = (Graphics2D) graphics;
+        protected void paintComponent(Graphics g) {
+            super.paintComponent(g);
             for (int y = 0; y < board.getHeight(); y++) {
                 for (int x = 0; x < board.getWidth(); x++) {
-                    if (board.get(x, y) == Liveness.LIVE) {
-                        g.setColor(Color.RED);
-                    }
-                    else {
-                        g.setColor(Color.WHITE);
-                    }
+                    g.setColor(board.get(x, y) == Liveness.LIVE ? Color.RED : Color.WHITE);
                     g.fillRect(x * cellSize, y * cellSize, cellSize, cellSize);
                     g.setColor(Color.BLACK);
                     g.drawRect(x * cellSize, y * cellSize, cellSize, cellSize);
