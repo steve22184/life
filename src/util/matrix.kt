@@ -27,6 +27,7 @@ public class MutableMatrixImpl<T> (
     override val height: Int,
     initialCellValues: (Int, Int) -> T
 ) : MutableMatrix<T> {
+
     private val cells: Array<T> = Array(width * height) {
         i ->
         val x = i % width
