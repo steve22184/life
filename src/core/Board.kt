@@ -26,13 +26,6 @@ open class Board(width: Int, height: Int) {
         notifyListeners()
     }
 
-    fun step() {
-        val tmp = matrix.toMutableMatrix()
-        tmp.fill { x, y, v -> nextState(x, y)}
-        matrix.copyFrom(tmp)
-        notifyListeners()
-    }
-
     fun addListener(key: Any, callback: () -> Unit) {
         onChange[key] = callback
     }
@@ -41,9 +34,15 @@ open class Board(width: Int, height: Int) {
         onChange.remove(key)
     }
 
+    fun step() {
+        val tmp = matrix.toMutableMatrix()
+        tmp.fill { x, y, v -> nextState(x, y)}
+        matrix.copyFrom(tmp)
+        notifyListeners()
+    }
+
     private fun nextState(x: Int, y: Int): Liveness {
-        val liveNeighbors = liveNeighbors(x, y)
-        return when(liveNeighbors) {
+        return when(liveNeighbors(x, y)) {
             2 -> get(x, y)
             3 -> LIVE
             else -> DEAD
