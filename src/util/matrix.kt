@@ -30,7 +30,7 @@ public class MutableMatrixImpl<T> (
     private val cells: Array<T> = Array(width * height) {
         i ->
         val x = i % width
-        val y = i / height
+        val y = i / width
         initialCellValues(x, y)
     }
 
