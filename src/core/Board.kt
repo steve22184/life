@@ -50,6 +50,7 @@ open class Board(width: Int, height: Int) {
     }
 
     private fun liveNeighbors(x: Int, y: Int): Int = neighbors(x, y).filter {p -> get(p.x, p.y) == LIVE}.size
+    // count()
 
     private fun neighbors(x: Int, y: Int): Collection<Point> {
         val result = ArrayList<Point>()

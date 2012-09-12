@@ -25,6 +25,7 @@ class KLifeView(val board: Board): JComponent() {
                 board[x, y] = board[x, y].invert()
             }
         })
+//        addMousePressed { }
     }
 
     public override fun paintComponent(g: Graphics) {
