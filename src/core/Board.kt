@@ -94,6 +94,20 @@ class ToroidalBoard(width: Int, height: Int) : Board(width, height) {
     }
 }
 
+public fun Board.iterator(): Iterator<Point> = object : Iterator<Point> {
+    var i = 0
+
+    public override fun next(): Point {
+        val result = Point(i % width, i / width)
+        i++
+        return result
+    }
+
+    public override fun hasNext(): Boolean {
+        return i < width * height
+    }
+}
+
 enum class Liveness {
     LIVE
     DEAD
