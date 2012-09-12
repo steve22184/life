@@ -1,0 +1,143 @@
+
+
+
+     Introduction
+
+
+         What is Kotlin
+
+         What this Workshop is about
+
+
+
+
+
+
+
+     Basics
+
+
+         Configure your environment
+
+         Create a Kotlin file
+
+         Run
+
+
+
+
+
+     Classes
+
+
+         Create a data class manually
+
+         Primary constructor
+
+         Default arguments
+
+         Named arguments
+
+
+
+
+     Extensions
+
+
+         Transpose for Point
+
+
+
+
+
+
+
+     Game of Life
+
+
+         2 friends - barely survive
+         3 friends - emerge
+         otherwise - die
+
+
+
+
+
+
+     Board
+
+
+         Matrix inside
+
+         Derived properties
+
+         get/set
+
+
+
+
+     Making steps
+
+
+         All neighbors
+
+         Filtering live ones
+
+         Counting
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+     Nullable types
+
+
+         Null-strictness
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+     Resources
+
+
+         Home page/Docs:
+            http://kotlin.jetbrains.com
+
+
+         Code:
+            http://github.com/jetbrains/kotlin
+
+
+         Twitter:
+            @abreslav
+            @project_kotlin
