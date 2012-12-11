@@ -23,7 +23,7 @@ class LifeView extends JComponent {
             @Override
             public Tuple0 invoke() {
                 repaint();
-                return Tuple0.INSTANCE;
+                return Tuple0.VALUE;
             }
         });
 
