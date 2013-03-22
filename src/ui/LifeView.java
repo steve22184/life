@@ -1,7 +1,7 @@
 package ui;
 
 import jet.Function0;
-import jet.Tuple0;
+import jet.Unit;
 import life.core.Board;
 import life.core.Liveness;
 
@@ -19,11 +19,11 @@ class LifeView extends JComponent {
 
     public LifeView(Board _board) {
         this.board = _board;
-        board.addListener(this, new Function0<Tuple0>() {
+        board.addListener(this, new Function0<Unit>() {
             @Override
-            public Tuple0 invoke() {
+            public Unit invoke() {
                 repaint();
-                return Tuple0.VALUE;
+                return Unit.VALUE;
             }
         });
 
