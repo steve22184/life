@@ -28,7 +28,7 @@ public class MutableMatrixImpl<T> (
     initialCellValues: (Int, Int) -> T
 ) : MutableMatrix<T> {
 
-    private val cells: Array<T> = Array(width * height) {
+    private val cells = Array<Any>(width * height) {
         i ->
         val x = i % width
         val y = i / width
@@ -36,7 +36,7 @@ public class MutableMatrixImpl<T> (
     }
 
     override fun get(x: Int, y: Int): T {
-        return cells[toIndex(x, y)]
+        return cells[toIndex(x, y)] as T
     }
 
     override fun set(x: Int, y: Int, value: T) {
