@@ -22,13 +22,13 @@ fun <T> Collection<T>.join(sep : String = "", prep : String = "") : String {
 }
 
 class Attribute(val name : String, val value : String) {
-    fun toString() = """$name="$value" """
+    override fun toString() = """$name="$value" """
 }
 
 abstract class Tag(val name : String) {
     val children : MutableList<Tag> = ArrayList()
     val attributes : MutableList<Attribute> = ArrayList()
-    open fun toString() = "<$name${attributes.join(prep = " ")}>${children.join()}</$name>"
+    override fun toString() = "<$name${attributes.join(prep = " ")}>${children.join()}</$name>"
 }
 
 class HTML : Tag("html")
