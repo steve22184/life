@@ -1,7 +1,7 @@
 package ui;
 
-import jet.Function0;
-import jet.Unit;
+import kotlin.Function0;
+import kotlin.Unit;
 import life.core.Board;
 import life.core.Liveness;
 
