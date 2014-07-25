@@ -23,7 +23,7 @@ class LifeView extends JComponent {
             @Override
             public Unit invoke() {
                 repaint();
-                return Unit.VALUE;
+                return Unit.INSTANCE$;
             }
         });
 
