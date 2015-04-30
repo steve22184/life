@@ -15,7 +15,7 @@ import java.awt.Color
 class KLifeView(val board: Board): JComponent() {
     private val cellSize = 20;
 
-    {
+    init {
         board.addListener(this) { repaint() }
 
         addMouseListener(object : MouseAdapter() {
