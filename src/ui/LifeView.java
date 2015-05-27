@@ -1,7 +1,7 @@
 package ui;
 
-import kotlin.Function0;
 import kotlin.Unit;
+import kotlin.jvm.functions.Function0;
 import life.core.Board;
 import life.core.Liveness;
 
