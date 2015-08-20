@@ -4,7 +4,7 @@ package util
  * @author abreslav 
  */
 
-public trait Matrix<out T> {
+public interface Matrix<out T> {
     val width: Int
     val height: Int
     fun get(x: Int, y: Int): T
@@ -18,7 +18,7 @@ public fun <T> Matrix<T>.traverseLines(f: (x: Int, y: Int, value: T) -> Unit) {
     }
 }
 
-public trait MutableMatrix<T> : Matrix<T> {
+public interface MutableMatrix<T> : Matrix<T> {
     fun set(x: Int, y: Int, value: T)
 }
 

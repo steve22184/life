@@ -49,7 +49,7 @@ open class Board(width: Int, height: Int) {
         }
     }
 
-    private fun liveNeighbors(x: Int, y: Int): Int = neighbors(x, y).filter {p -> get(p.x, p.y) == LIVE}.size
+    private fun liveNeighbors(x: Int, y: Int): Int = neighbors(x, y).filter { p -> get(p.x, p.y) == LIVE}.size()
     // count()
 
     private fun neighbors(x: Int, y: Int): Collection<Point> {
@@ -109,8 +109,8 @@ public fun Board.iterator(): Iterator<Point> = object : Iterator<Point> {
 }
 
 enum class Liveness {
-    LIVE
-    DEAD
+    LIVE,
+    DEAD;
 
     fun invert(): Liveness = when (this) {
         DEAD -> LIVE
