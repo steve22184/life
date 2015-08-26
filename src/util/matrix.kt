@@ -22,7 +22,7 @@ public interface MutableMatrix<T> : Matrix<T> {
     fun set(x: Int, y: Int, value: T)
 }
 
-public class MutableMatrixImpl<T> (
+public class MutableMatrixImpl<T : Any> (
     override val width: Int,
     override val height: Int,
     initialCellValues: (Int, Int) -> T
@@ -58,7 +58,7 @@ public class MutableMatrixImpl<T> (
     }
 }
 
-public fun MutableMatrix<T>(w: Int, h: Int, f: (x: Int, y: Int) -> T): Matrix<T> = MutableMatrixImpl(w, h, f)
+public fun MutableMatrix<T : Any>(w: Int, h: Int, f: (x: Int, y: Int) -> T): Matrix<T> = MutableMatrixImpl(w, h, f)
 
 public fun <T> MutableMatrix<T>.fill(f: (x: Int, y: Int, value: T) -> T) {
     for (y in 0..height - 1) {
@@ -76,5 +76,5 @@ public fun <T> MutableMatrix<T>.copyFrom(m: Matrix<T>) {
     }
 }
 
-public fun <T> Matrix<T>.toMutableMatrix(): MutableMatrix<T> = MutableMatrixImpl(width, height) {x, y -> get(x, y)}
+public fun <T : Any> Matrix<T>.toMutableMatrix(): MutableMatrix<T> = MutableMatrixImpl(width, height) {x, y -> get(x, y)}
 
