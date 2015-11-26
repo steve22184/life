@@ -1,10 +1,6 @@
 package html
 
-import java.io.File
-import javax.swing.JFrame
-import javax.swing.JLabel
-import javax.swing.JScrollPane
-import java.util.ArrayList
+import java.util.*
 
 fun <T> Collection<T>.join(sep : String = "", prep : String = "") : String {
     val sb = StringBuilder()
@@ -40,7 +36,7 @@ class Text(val text : String) : Tag("b") {
     override fun toString() = text
 }
 
-fun Tag.doInit<T : Tag>(t : T, f : T.() -> Unit) : T{
+fun <T : Tag> Tag.doInit(t : T, f : T.() -> Unit) : T{
     t.f()
     children.add(t)
     return t

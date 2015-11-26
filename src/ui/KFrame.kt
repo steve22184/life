@@ -1,17 +1,12 @@
 package life.ui
 
-import javax.swing.JFrame
+import life.core.Liveness
 import life.core.ToroidalBoard
-import javax.swing.JComponent
-import life.core.*
-import java.awt.Graphics
-import java.awt.Color
-import java.awt.event.MouseAdapter
-import java.awt.event.MouseEvent
-import java.util.Timer
-import java.util.TimerTask
+import life.core.iterator
 import java.awt.event.KeyAdapter
 import java.awt.event.KeyEvent
+import java.util.*
+import javax.swing.JFrame
 
 fun main(args: Array<String>) {
     val frame = JFrame()

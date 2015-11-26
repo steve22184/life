@@ -3,11 +3,10 @@
  */
 package life.core
 
+import life.core.Liveness.DEAD
+import life.core.Liveness.LIVE
 import util.*
-import life.core.Liveness.*
-import java.util.ArrayList
-import java.util.LinkedHashMap
-import java.util.IllegalFormatWidthException
+import java.util.*
 
 open class Board(width: Int, height: Int) {
     private val matrix: MutableMatrix<Liveness> = MutableMatrixImpl(width, height) {x, y -> DEAD}
@@ -19,9 +18,9 @@ open class Board(width: Int, height: Int) {
     val height: Int
         get() = matrix.height
 
-    fun get(x: Int, y: Int): Liveness = matrix[x, y]
+    operator fun get(x: Int, y: Int): Liveness = matrix[x, y]
 
-    fun set(x: Int, y: Int, value: Liveness) {
+    operator fun set(x: Int, y: Int, value: Liveness) {
         matrix[x, y] = value
         notifyListeners()
     }
@@ -49,8 +48,7 @@ open class Board(width: Int, height: Int) {
         }
     }
 
-    private fun liveNeighbors(x: Int, y: Int): Int = neighbors(x, y).filter { p -> get(p.x, p.y) == LIVE}.size()
-    // count()
+    private fun liveNeighbors(x: Int, y: Int): Int = neighbors(x, y).filter { p -> get(p.x, p.y) == LIVE}.size
 
     private fun neighbors(x: Int, y: Int): Collection<Point> {
         val result = ArrayList<Point>()
@@ -94,7 +92,7 @@ class ToroidalBoard(width: Int, height: Int) : Board(width, height) {
     }
 }
 
-public fun Board.iterator(): Iterator<Point> = object : Iterator<Point> {
+public operator fun Board.iterator(): Iterator<Point> = object : Iterator<Point> {
     var i = 0
 
     public override fun next(): Point {

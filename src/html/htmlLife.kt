@@ -1,11 +1,11 @@
 package html
 
 import life.core.Board
-import javax.swing.JFrame
-import javax.swing.JScrollPane
-import javax.swing.JLabel
 import life.core.Liveness
 import life.core.ToroidalBoard
+import javax.swing.JFrame
+import javax.swing.JLabel
+import javax.swing.JScrollPane
 
 fun render(board: Board) : String {
     return html {
