@@ -7,7 +7,7 @@ package util
 public interface Matrix<out T> {
     val width: Int
     val height: Int
-    fun get(x: Int, y: Int): T
+    operator fun get(x: Int, y: Int): T
 }
 
 public fun <T> Matrix<T>.traverseLines(f: (x: Int, y: Int, value: T) -> Unit) {
@@ -19,7 +19,7 @@ public fun <T> Matrix<T>.traverseLines(f: (x: Int, y: Int, value: T) -> Unit) {
 }
 
 public interface MutableMatrix<T> : Matrix<T> {
-    fun set(x: Int, y: Int, value: T)
+    operator fun set(x: Int, y: Int, value: T)
 }
 
 public class MutableMatrixImpl<T : Any> (
@@ -58,7 +58,7 @@ public class MutableMatrixImpl<T : Any> (
     }
 }
 
-public fun MutableMatrix<T : Any>(w: Int, h: Int, f: (x: Int, y: Int) -> T): Matrix<T> = MutableMatrixImpl(w, h, f)
+public fun <T : Any> MutableMatrix(w: Int, h: Int, f: (x: Int, y: Int) -> T): Matrix<T> = MutableMatrixImpl(w, h, f)
 
 public fun <T> MutableMatrix<T>.fill(f: (x: Int, y: Int, value: T) -> T) {
     for (y in 0..height - 1) {
