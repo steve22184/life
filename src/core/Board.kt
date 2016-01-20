@@ -71,7 +71,7 @@ open class Board(width: Int, height: Int) {
     }
 
     private fun notifyListeners() {
-        for (l in onChange.values()) {
+        for (l in onChange.values) {
             l()
         }
     }
